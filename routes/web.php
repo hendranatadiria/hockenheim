@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PenulisController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [FrontendController::class, 'index']);
+Route::get('/post/{id}', [FrontendController::class, 'lihatpost']);
+Route::get('/login', [LoginController::class, 'login']);
+Route::get('/admin/login', [LoginController::class, 'login']);
+Route::post('/login', [LoginController::class, 'auth']);
+Route::get('/signup', [LoginController::class, 'signup']);

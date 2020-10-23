@@ -28,7 +28,7 @@
         <div class="col text-center">
           <h2>Sign Up</h2>
         </div>
-      </div> 
+      </div>
 
 
       <!-- Form -->
@@ -37,6 +37,12 @@
 
       <div class="col-lg-4">
         <form>
+            @csrf
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
 		  <div class="form-row pt-2">
             <label for="nama">Nama</label>
             <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama..." required>
@@ -51,11 +57,11 @@
             <input type="password" class="form-control" id="Password" placeholder="Masukkan Password..."  required>
           </div>
           <div class="form-row">
-            <button class="btn btn-dark mt-3 col-lg-12" type="submit">Sign Up</button>     
+            <button class="btn btn-dark mt-3 col-lg-12" type="submit">Sign Up</button>
           </div>
 		  <div class="row pt-2">
 			<div class="col text-center">
-				<h6>Punya akun? <a href="login.html"><i>Masuk</i></a></h6>
+				<h6>Punya akun? <a href="login"><i>Masuk</i></a></h6>
 			</div>
 		  </div>
         </form>
