@@ -16,20 +16,41 @@
 <body class="mt-5">
 
   <!-- Navbar -->
-<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-warning">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-warning">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">RuangBicara</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <a class="navbar-brand" href="#">Peluang Berbicara</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
-          <a class="nav-link active" href="home.html">Home <span class="sr-only">(current)</span></a>
-          <a class="nav-link" href="detailpost.html">Postingan</a>
-          <a class="nav-link" href="profile.html">Profil</a>
-          <a class="nav-link" href="galeri.html">Galeri</a>
-          <a class="nav-link" href="contact.html">Contact</a>
-        </div>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="homee.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="detailpost.html">Postingan</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0 ">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-dark my-2 my-sm-0 mr" type="submit">Search</button>
+        </form>
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              raraariefftah
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Edit Akun</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Keluar</a>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>

@@ -1,25 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="bootstrap dist/css/bootstrap.min.css">
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="jquery.min.js"></script>
-  <script src="popper.min.js"></script>
-  <script src="bootstrap dist/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <title>Peluang Berbicara</title>
-</head>
-<body class="mt-5">
 
-  <!-- Navbar -->
   @include('pengunjung.header')
-
-
-
   <!-- Jumbotron -->
   <div class="jumbotron jumbotron-fluid">
     <div class="container text-center">
@@ -79,16 +59,4 @@
       --}}
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-warning text-black pt-3">
-      <div class="container">
-        <div class="row text-center">
-          <div class="col">
-            <p>PeluangBerbicara2020.</p>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-  </body>
-  </html>
+    @include('pengunjung.footer')
