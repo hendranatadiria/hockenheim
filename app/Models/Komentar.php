@@ -11,4 +11,12 @@ class Komentar extends Model
 
     protected $table='komentar';
     protected $primaryKey = 'idkomentar';
+
+    public function penulis(){
+        return $this->belongsTo('App\Models\Penulis', 'idpenulis');
+    }
+
+    public function post(){
+        return $this->hasOne('App\Models\Post', 'idpost', 'idpost');
+    }
 }

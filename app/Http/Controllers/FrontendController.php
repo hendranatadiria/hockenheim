@@ -29,4 +29,24 @@ class FrontendController extends Controller
 
         return view('search', compact('post'));
     }
+
+    public function storeKomentar(Request $request, $id){
+        $komentar = new Komentar();
+        $komentar->idpost = $id;
+        $komentar->idpenulis = Auth::guard('web')->user()->idpenulis;
+        $komentar->isi = $request->isikomentar;
+        $komentar->save();
+
+        return redirect()->back();
+
+    }
+
+    public function deleteKomentar($id){
+        $komentar = Komentar::where('idkomentar', $id)->firstOrFail();
+        if ($komentar->post->idpenulis == Auth::guard('web')->user()->idpenulis) {
+            $komentar->delete();
+        }
+
+        return redirect()->back();
+    }
 }
