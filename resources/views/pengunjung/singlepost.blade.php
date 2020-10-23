@@ -33,7 +33,7 @@
 
 
 <!--Komentar -->
-<section id="contact" class="contact bg-light pt-2">
+<section id="comment" class="comment bg-light pt-2">
   <div class="container">
     <!-- Form -->
     <div class="col-md-6 offset-md-3">
