@@ -11,4 +11,8 @@ class Post extends Model
 
     protected $table='Post';
 
+    public function penulis() {
+        return $this->belongsTo('App\Models\Penulis', 'idpenulis');
+    }
+
 }

@@ -42,6 +42,11 @@
                     {{ session('error') }}
                 </div>
             @endif
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
           <div class="form-row pt-2">
             <label for="Email">Email</label>
             <input type="text" class="form-control" id="Email"  name="email" placeholder="Masukkan email..." required>

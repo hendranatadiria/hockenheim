@@ -36,25 +36,34 @@
       <div class="col-lg-0 pt-4 mt-2"> </div>
 
       <div class="col-lg-4">
-        <form>
+        <form method="POST">
             @csrf
             @if (session('error'))
                 <div class="alert alert-danger">
                     {{ session('error') }}
                 </div>
             @endif
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 		  <div class="form-row pt-2">
             <label for="nama">Nama</label>
-            <input type="text" class="form-control" id="nama" placeholder="Masukkan Nama..." required>
+            <input type="text" class="form-control" id="nama" name="nama" placeholder="Masukkan Nama..." required>
           </div>
 
           <div class="form-row pt-2">
             <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Masukkan Email..." required>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan Email..." required>
           </div>
           <div class="form-row pt-2">
             <label for="Password">Password</label>
-            <input type="password" class="form-control" id="Password" placeholder="Masukkan Password..."  required>
+            <input type="password" class="form-control" name="password" id="Password" placeholder="Masukkan Password..."  required>
           </div>
           <div class="form-row">
             <button class="btn btn-dark mt-3 col-lg-12" type="submit">Sign Up</button>

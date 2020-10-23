@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\Penulis;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
@@ -31,5 +33,35 @@ class LoginController extends Controller
 
     public function signup(){
         return view('signup');
+    }
+
+    public function registerPenulis(Request $request){
+        $validatedData = $request->validate([
+            'email' => 'required|email|unique:penulis|max:255',
+            'password' => 'required|min:6',
+            'nama' => 'required',
+        ]);
+
+        $penulis = new Penulis();
+        $penulis->nama = $request->nama;
+        $penulis->email = $request->email;
+        $penulis->password = Hash::make($request->password);
+        $penulis->save();
+
+        return redirect('/login')->with('success', 'Registrasi berhasil, silakan login.');
+    }
+
+    public function logout(){
+        if (Auth::guard('web')->check()) {
+            Auth::guard('web')->logout();
+        }
+        return redirect('/login');
+    }
+
+    public function logoutAdmin(){
+        if(Auth::guard('admin')->check()) {
+            Auth::guard('admin')->logout();
+        }
+        return redirect('/admin/login');
     }
 }
