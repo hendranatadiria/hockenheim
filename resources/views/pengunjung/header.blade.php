@@ -26,10 +26,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="homee.html">Home</a>
+            <a class="nav-link" href="index.blade.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="detailpost.html">Postingan</a>
+            <a class="nav-link" href="singlepost.blade.php">Postingan</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="contact.html">Contact</a>
