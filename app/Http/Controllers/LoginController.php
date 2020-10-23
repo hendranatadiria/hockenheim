@@ -32,4 +32,18 @@ class LoginController extends Controller
     public function signup(){
         return view('signup');
     }
+
+    public function logout(){
+        if (Auth::guard('web')->check()) {
+            Auth::guard('web')->logout();
+        }
+        return redirect('login');
+    }
+
+    public function logoutAdmin(){
+        if(Auth::guard('admin')->check()) {
+            Auth::guard('admin')->logout();
+        }
+        return redirect('admin/login');
+    }
 }
