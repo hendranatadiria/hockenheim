@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-  @include('pengunjung.header')
-=======
-
   @include('pengunjung.header')
 
 
@@ -67,10 +63,3 @@
     </section>
 
     @include('pengunjung.footer')
-
-
-      --}}
-    </section>
-
-    @include('pengunjung.footer')
-
