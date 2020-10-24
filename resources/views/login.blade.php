@@ -49,11 +49,11 @@
             @endif
           <div class="form-row pt-2">
             <label for="Email">Email</label>
-            <input type="text" class="form-control" id="Email"  name="email" placeholder="Masukkan email..." required>
+            <input type="text" class="form-control" id="Email"  name="email" placeholder="Masukkan Email..." required>
           </div>
           <div class="form-row pt-2">
             <label for="Password">Password</label>
-            <input type="password" class="form-control" id="Password" name="password" placeholder="Masukkan password..."  required>
+            <input type="password" class="form-control" id="Password" name="password" placeholder="Masukkan Password..."  required>
           </div>
           <div class="form-row pt-2">
             <button class="btn btn-dark mt-3 col-lg-12" type="submit">Masuk</button>
