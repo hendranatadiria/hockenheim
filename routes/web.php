@@ -31,5 +31,5 @@ Route::get('/logout', [LoginController::class, 'logout']);
 
 //Admin
 Route::get('/admin/login', [LoginController::class, 'login']);
-Route::get('/admin/login', [LoginController::class, 'authAdmin']);
+Route::post('/admin/login', [LoginController::class, 'authAdmin']);
 Route::get('/admin/logout', [LoginController::class, 'logoutAdmin']);
