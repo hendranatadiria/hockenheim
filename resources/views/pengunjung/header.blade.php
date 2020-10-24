@@ -32,7 +32,7 @@
             <a class="nav-link" href="/post">Postingan</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/contact">Postingan Saya</a>
+            <a class="nav-link" href="/mypost">Postingan Saya</a>
           </li>
         </ul>
 
