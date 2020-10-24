@@ -1,3 +1,6 @@
+    <!-- Footer -->
+    <footer class="bg-warning text-black pt-3">
+
 <!-- Footer -->
 <footer class="bg-warning text-black pt-3">
       <div class="container">
