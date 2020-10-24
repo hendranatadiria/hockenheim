@@ -1,9 +1,4 @@
-<<<<<<< HEAD
   @include('pengunjung.header')
-=======
-
-  @include('pengunjung.header')
-
 
 
   <!-- Jumbotron -->
@@ -67,10 +62,3 @@
     </section>
 
     @include('pengunjung.footer')
-
-
-      --}}
-    </section>
-
-    @include('pengunjung.footer')
-
