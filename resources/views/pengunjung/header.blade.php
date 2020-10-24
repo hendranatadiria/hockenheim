@@ -32,43 +32,59 @@
             <a class="nav-link" href="/post">Postingan</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/contact">Contact</a>
+            <a class="nav-link" href="/mypost">Postingan Saya</a>
           </li>
         </ul>
+
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/bell.png" width="30" height="30" class="mr-2">
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item text-center" href="#">Notifikasi</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">komentar komentar komentar komentar komentar komentar </a>
+            </div>
+          </li>
+        </ul>
+
         <form class="form-inline my-2 my-lg-0 " action="/search">
           <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-dark my-2 my-sm-0 mr" type="submit">Search</button>
         </form>
         @php
-            $user = \Auth::guard('web')->user();
+            $user = \Auth::guard('admin')->user();
         @endphp
         @if($user!==null)
-        <ul class="navbar-nav">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{\Illuminate\Support\Str::limit($user->nama, 35, $end='...')}}
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Edit Akun</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/logout">Keluar</a>
-            </div>
-          </li>
-        </ul>
-        @else
-        <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="/login" >
-                Login
-              </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/signup" >
-                  Daftar
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{\Illuminate\Support\Str::limit($user->nama, 35, $end='...')}}
+
                 </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#">Edit Akun</a>
+                  <div class="dropdown-divider"></div>
+
+                  <a class="dropdown-item" href="/admin/logout">Keluar</a>
+                </div>
               </li>
-          </ul>
+            </ul>
+        @else
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="/login" >
+                    Login
+                  </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/signup" >
+                      Daftar
+                    </a>
+                  </li>
+              </ul>
         @endif
+
       </div>
     </div>
   </nav>

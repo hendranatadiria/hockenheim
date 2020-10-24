@@ -47,7 +47,7 @@ return [
             'hash' => false,
         ],
         'admin' => [
-            'driver' => 'token',
+            'driver' => 'session',
             'provider' => 'admins'
         ]
     ],
