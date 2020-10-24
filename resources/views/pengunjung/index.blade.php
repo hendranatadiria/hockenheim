@@ -1,7 +1,6 @@
   @include('pengunjung.header')
 
 
-
   <!-- Jumbotron -->
   <div class="jumbotron jumbotron-fluid">
     <div class="container text-center">
