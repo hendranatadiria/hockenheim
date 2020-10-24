@@ -1,4 +1,11 @@
+<<<<<<< HEAD
   @include('pengunjung.header')
+=======
+
+  @include('pengunjung.header')
+
+
+
   <!-- Jumbotron -->
   <div class="jumbotron jumbotron-fluid">
     <div class="container text-center">
@@ -54,8 +61,16 @@
         </div>
         @endforeach
         {{--
+
       
       --}}
     </section>
 
     @include('pengunjung.footer')
+
+
+      --}}
+    </section>
+
+    @include('pengunjung.footer')
+

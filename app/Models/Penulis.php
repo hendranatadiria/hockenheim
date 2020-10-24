@@ -11,7 +11,8 @@ class Penulis extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    protected $table="penulis";
+    protected $table='penulis';
+    protected $primaryKey = 'idpenulis';
 
     /**
      * The attributes that are mass assignable.
