@@ -31,6 +31,13 @@ class LoginController extends Controller
         return redirect('login')->with('error','Invalid login credentials');
     }
 
+    public function authAdmin(Request $request){
+        if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
+            return redirect()->intended('/admin');
+        }
+        return redirect('/admin/login')->with('error','Invalid login credentials');
+    }
+
     public function signup(){
         return view('signup');
     }
