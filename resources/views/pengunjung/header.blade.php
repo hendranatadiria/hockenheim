@@ -70,11 +70,6 @@
             </div>
           </li>
         </ul>
-
-              <a class="dropdown-item" href="/logout">Keluar</a>
-            </div>
-          </li>
-        </ul>
         @else
         <ul class="navbar-nav">
             <li class="nav-item">
