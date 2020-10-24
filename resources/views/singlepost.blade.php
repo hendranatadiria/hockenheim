@@ -44,7 +44,7 @@
     @foreach($post as $data)
       <div class="col">
         <h2>{{$data->judul}}</h2>
-        <p class="mt-3">Penulis :{{data->idpenulis}} </p>
+        <p class="mt-3">Penulis :{{$data->idpenulis}} </p>
       </div>    
     </div>
 
