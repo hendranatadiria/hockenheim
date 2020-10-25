@@ -41,13 +41,16 @@ Route::middleware('auth:web')->group(function () {
 
 //Admin
 Route::middleware('auth:admin')->group(function () {
-    Route::get('/admin', [AdminController::class, 'index']);
-    Route::get('/admin/penulis/daftar', [AdminController::class, 'listPenulis']);
-    Route::get('/admin/kategori/daftar', [AdminController::class, 'listKategori']);
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/penulis/daftar', [AdminController::class, 'listPenulis'])->name('admin.listpenulis');
+    Route::get('/admin/penulis/resetpass/{id}', [AdminController::class, 'resetPassword'])->name('admin.listpenulis');
+    Route::post('/admin/penulis/resetpass/{id}', [AdminController::class, 'storeResetPassword'])->name('admin.listpenulis');
+    Route::get('/admin/kategori/daftar', [AdminController::class, 'listKategori'])->name('admin.listkategori');
     Route::get('/admin/kategori/tambah', [AdminController::class, 'tambahKategori'])->name('admin.addcategory');
-    Route::post('/admin/kategori/tambah', [AdminController::class, 'simpanKategori'])->name('admin.addcategory');
+    Route::post('/admin/kategori/tambah', [AdminController::class, 'simpanKategori'])->name('admin.storecategory');
+    Route::post('/admin/kategori/hapus/{id}', [AdminController::class, 'hapusKategori'])->name('admin.deletecategory');
     Route::get('/admin/kategori/edit/{id}', [AdminController::class, 'editKategori'])->name('admin.editkategori');
-    Route::post('/admin/kategori/edit/{id}', [AdminController::class, 'updateKategori'])->name('admin.editkategori');
+    Route::post('/admin/kategori/edit/{id}', [AdminController::class, 'updateKategori'])->name('admin.updatekategori');
 });
 
 //Frontpage

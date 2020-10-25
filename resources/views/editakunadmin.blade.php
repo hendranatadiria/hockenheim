@@ -31,10 +31,21 @@
 			<div class="form-group">
 				<label for="email">Email</label>
 				<input type="email" name="email" id="email" class="form-control" value="{{$data->email}}">
+            </div>
+            <div class="form-group">
+				<label for="email">Password Lama</label>
+				<input type="password" name="oldpassword" id="email" class="form-control" >
+            </div>
+            <div class="form-group">
+				<label for="email">Password Baru</label>
+				<input type="password" name="password" id="email" class="form-control" >
+            </div>
+            <div class="form-group">
+				<label for="email">Konfirmasi Password Baru</label>
+				<input type="password" name="passwordconfirm" id="email" class="form-control" >
 			</div>
 			<div class="mt-4">
 				<button class="btn btn-success" type="submit">Selesai</button>
-				<button class="btn btn-danger ml-2" type="submit">Ubah Password</button>
 			</div>
 		</form>
 		</div>
@@ -42,7 +53,7 @@
 	</div>
         @endforelse
         {{--
-      
+
       --}}
     </section>
 @include('pengunjung.footer')

@@ -6,6 +6,16 @@
       <div class="card">
         <div class="card-header">Daftar Kategori</div>
         <div class="card-body">
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
           <br>
           <a href="/dashboard" class="mb-3 btn btn-primary">Dashboard</a>
           <a href="/admin/kategori/tambah" class="mb-3 btn btn-outline-info ml-2">+ Kategori</a><br><br>
@@ -33,7 +43,9 @@
 				<td>{{$data->updated_at}}</td>
 				<td>
 				  <a class="btn btn-warning btn-sm" href="/admin/kategori/edit/{{$data->idkategori}}">Edit</a>
-				  <a class="btn btn-danger btn-sm" href="#">Hapus</a>
+                  <form action="/admin/kategori/hapus/{{$data->idkategori}}" method="POST">@csrf
+                  <button class="btn btn-danger btn-sm" type="submit">Hapus</button>
+                  </form>
                 </td>
             </tr>
 			@endforeach

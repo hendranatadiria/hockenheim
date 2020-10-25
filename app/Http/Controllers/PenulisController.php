@@ -7,6 +7,7 @@ use App\Models\Penulis;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class PenulisController extends Controller
 {
@@ -65,6 +66,15 @@ class PenulisController extends Controller
         return redirect('/post/'.$post->idpost);
     }
 
+    public function deletePost(Request $request, $id){
+        $post =  Post::where('idpost', $id)->firstOrFail();
+        if($post->idpenulis == Auth::guard('web')->user()->idpenulis) {
+            $post->delete();
+        }
+
+        return redirect('/mypost')->with('success', 'Postingan berhasil dihapus');
+    }
+
     public function postSaya(){
         $post = Post::where('idpenulis', Auth::guard('web')->user()->idpenulis)->orderByDesc('created_at')->get();
 
@@ -91,10 +101,18 @@ class PenulisController extends Controller
             $data->no_telp = $request->input('no_telp');
             $data->email = $request->input('email');
 
+            if($request->input('oldpassword') !== null || $request->input('password')!== null || $request->input('passwordconfirm') !== null) {
+                if (Hash::check($request->input('oldpassword'), $data->password) && ($request->input('password') == $request->input('passwordconfirm'))){
+                    $data->password = Hash::make($request->input('password'));
+                } else {
+                    return redirect()->back()->with('error', 'Password Lama, Password Baru, atau konfirmasi password tidak tepat.');
+                }
+            }
+
             $data->save();
 
         }
 
-        return redirect('/post/editAkun/'.$data->idpenulis);
+        return redirect('/post/editAkun/'.$data->idpenulis)->with('success', 'Profile berhasil diupdate');
     }
 }
