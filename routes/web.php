@@ -29,6 +29,8 @@ Route::middleware('auth:web')->group(function () {
     Route::post('/post/tambah', [PenulisController::class, 'simpanPost']);
     Route::get('/post/edit/{id}', [PenulisController::class, 'editPost']);
     Route::post('/post/edit/{id}', [PenulisController::class, 'updatePost']);
+    Route::get('/post/editAkun/{id}', [PenulisController::class, 'editAkunPenulis']);
+    Route::post('/post/editAkun/{id}', [PenulisController::class, 'updateAkunPenulis']);
 });
 
 //Admin
@@ -50,3 +52,4 @@ Route::get('/post/{id}', [FrontendController::class, 'lihatPost']);
 Route::post('/post/{id}/komentar', [FrontendController::class, 'storeKomentar']);
 Route::post('/post/deletecomment/{id}', [FrontendController::class, 'deleteKomentar']);
 Route::get('/search', [FrontendController::class, 'cariPost']);
+

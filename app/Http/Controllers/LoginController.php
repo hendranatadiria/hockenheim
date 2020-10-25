@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\Hash;
+use function Symfony\Component\HttpFoundation\get;
 
 class LoginController extends Controller
 {
@@ -58,6 +59,26 @@ class LoginController extends Controller
         return redirect('/login')->with('success', 'Registrasi berhasil, silakan login.');
     }
 
+    public function editAkun(Request $request){
+        $nama = $request->$nama;
+        $email = $request->$email;
+        $password = $request->$password;
+
+        $validatedData = $request->validate([
+            'email' => 'required|email|unique:penulis|max:255',
+            'password' => 'required|min:6',
+            'nama' => 'required',
+        ]);
+
+        $penulis = get(Penulis::all());
+        $penulis->nama = $request->nama;
+        $penulis->email = $request->email;
+        $penulis->password = Hash::make($request->password);
+        $penulis->save();
+
+        return redirect('/login')->with('success', 'Registrasi berhasil, silakan login.');
+    }
+
     public function logout(){
         if (Auth::guard('web')->check()) {
             Auth::guard('web')->logout();
@@ -74,5 +95,33 @@ class LoginController extends Controller
             Auth::logout();
         }
         return redirect('/login');
+    }
+
+    public function editAkunPenulis($id){
+        $data = Penulis::where('idpenulis', $id)->firstOrFail();
+        //$penulis = $data->penulis;
+
+        if ($data->idpenulis == Auth::guard('web')->user()->idpenulis) {
+
+            return view('editakunpenulis', compact('data'));
+        }
+        return redirect('/post/editAkun/'.$id);
+
+    }
+
+    public function updateAkunPenulis(Request $request, $id){
+        $data = Penulis::where('idpenulis', $id)->firstOrFail();
+        if($data->idpenulis == Auth::guard('web')->user()->idpenulis) {
+            $data->nama = $request->input('nama');
+            $data->kota = $request->input('kota');
+            $data->alamat = $request->input('alamat');
+            $data->no_telp = $request->input('no_telp');
+            $data->email = $request->input('email');
+
+            $data->save();
+
+        }
+
+        return redirect('/post/editAkun/'.$data->idpenulis);
     }
 }

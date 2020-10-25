@@ -42,6 +42,9 @@
                 <a class="nav-link" href="/">Home</a>
               </li>
               <li class="nav-item">
+                  <a class="nav-link" href="/post/tambah">Tambah Postingan</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="/post">Postingan</a>
               </li>
               <li class="nav-item">
@@ -77,7 +80,7 @@
               {{\Illuminate\Support\Str::limit($user->nama, 35, $end='...')}}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Edit Akun</a>
+              <a class="dropdown-item" href="/post/editAkun">Edit Akun</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="/logout">Keluar</a>
             </div>

@@ -23,26 +23,26 @@
                     {{ session('success') }}
                 </div>
             @endif
-			@forelse($penulis as $data)
+			@foreach($data as $datas)
 			<div class="form-group">
 				<label for="nama">Nama</label>
-				<input type="text" name="nama" id="nama" class="form-control" value="{{$data->nama}}">
+				<input type="text" name="nama" id="nama" class="form-control" value="{{$datas->nama}}">
 			</div>
 			<div class="form-group">
 				<label for="alamat">Alamat</label>
-				<textarea type="text" name="alamat" id="alamat" class="form-control" rows="5" value="{{$data->alamat}}"></textarea>
+				<textarea type="text" name="alamat" id="alamat" class="form-control" rows="5" value="{{$datas->alamat}}"></textarea>
 			</div>
 			<div class="form-group">
 				<label for="kota">Kota</label>
-				<input type="text" name="kota" id="kota" class="form-control" value="{{$data->kota}}">
+				<input type="text" name="kota" id="kota" class="form-control" value="{{$datas->kota}}">
 			</div>
 			<div class="form-group">
 				<label for="no_telp">Nomor Telepon</label>
-				<input type="tel" name="no_telp" id="no_telp" class="form-control" value="{{$data->no_telp}}">
+				<input type="tel" name="no_telp" id="no_telp" class="form-control" value="{{$datas->no_telp}}">
 			</div>
 			<div class="form-group">
 				<label for="email">Email</label>
-				<input type="email" name="email" id="email" class="form-control" value="{{$data->email}}">
+				<input type="email" name="email" id="email" class="form-control" value="{{$datas->email}}">
 			</div>
 			<div class="mt-4">
 				<button class="btn btn-success" type="submit">Selesai</button>
@@ -52,7 +52,7 @@
 		</div>
 		</div>
 	</div>
-        @endforelse
+        @endforeach
         {{--
       
       --}}
