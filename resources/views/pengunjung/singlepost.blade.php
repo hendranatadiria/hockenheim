@@ -8,11 +8,9 @@
         <p class="mt-3">Penulis: {{$post->penulis->nama}} </p>
       </div>
     </div>
-
     <div class="row justify-content-center">
       <div class="col-lg-4.5 pb-3">
         <img src="/img/{{$post->file_gambar}}" alt="gambar" width="400px;">
-
       </div>
     </div>
         <div class="col-md-6 offset-md-3">
