@@ -3,6 +3,16 @@
 <section id="mypost" class="mypost bg-light pb-4">
     <div class="container">
         <div class="row mb-4 pt-5">
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="col text-center">
                 <h2>Postingan Saya</h2>
             </div>
@@ -17,7 +27,7 @@
                     @endif
                         <div class="card-body text-center">
                             <h5 class="card-title text-center">{{$data->judul}}</h5>
-                            <p class="card-text text-center">Kategori: {{$data->kategori->nama}}</p>
+                            <p class="card-text text-center">Kategori: <a href="/kategori/{{$data->idkategori}}">{{$data->kategori->nama}}</a></p>
                             <a href="post/edit/{{$data->idpost}}"  class="btn btn-warning">Sunting</a>
                             <a href="post/{{$data->idpost}}"  class="btn btn-success">Lihat Selengkapnya</a>
                         </div>

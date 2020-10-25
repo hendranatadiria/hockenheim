@@ -38,9 +38,9 @@
               </li>
               <li class="nav-item {{ request()->segment(1)=='post'?'active':''}}">
                 <a class="nav-link" href="/post">Postingan</a>
-                
+
             @elseif($useradmin==null)
-            
+
               <li class="nav-item {{ request()->segment(1)==''?'active':''}} {{ request()->segment(1)=='home'?'active':''}}">
                 <a class="nav-link" href="/">Home</a>
               </li>
@@ -75,19 +75,20 @@
         </form>
         @php
             $user = \Auth::guard('web')->user();
+            $admin = \Auth::guard('admin')->user();
         @endphp
         @if($user != null)
         @php
         $idpenulis = \Auth::guard('web')->user()->idpenulis;
         $user = \Auth::guard('web')->user();
         @endphp
-        @else
+        @elseif($admin !== null)
         @php
-        $user = \Auth::guard('admin')->user();
-        $idpenulis = \Auth::guard('admin')->user()->idadmin;
+        $user = $admin;
+        $idpenulis = $admin->idadmin;
         @endphp
         @endif
-        @if($user!==null)
+        @if($user!==null||$admin!==null)
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -96,7 +97,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="/post/editAkun/@php echo $idpenulis; @endphp">Edit Akun</a>
               <div class="dropdown-divider"></div>
-                @if($user == Auth::guard('admin')->user())
+                @if($user == $admin)
                     <a class="dropdown-item" href="/admin/logout">Keluar</a>
                 @else
                     <a class="dropdown-item" href="/logout">Keluar</a>
