@@ -38,7 +38,7 @@
 
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/writing.png" width="30" height="30" class="mr-2">
+            <a class="nav-link dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/bell.png" width="30" height="30" class="mr-2">
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item text-center" href="#">Notifikasi</a>
