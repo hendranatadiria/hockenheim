@@ -28,11 +28,10 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-<<<<<<< HEAD
             @php
             $user = \Auth::guard('web')->user();
             @endphp
-            @if($user!==null)
+            @if($user==null)
               <li class="nav-item {{ request()->segment(1)==''?'active':''}} {{ request()->segment(1)=='home'?'active':''}}">
                 <a class="nav-link" href="/">Home</a>
               </li>
