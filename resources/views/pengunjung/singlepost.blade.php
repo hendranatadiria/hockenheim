@@ -95,9 +95,9 @@
       <!-- Form -->
       <div class="col-md-6 offset-md-3">
       @if(\Auth::guard('web')->check())
-      <h4 class="pt-4">Berikan Komentar</h4>
         <form action="/post/{{$post->idpost}}/komentar" method="POST">
           <div class="form-row pt-2">
+          <h4 class="pt-4">Berikan Komentar</h4>
               @csrf
             <label for="validationDefault04">Comment as <i><u><b>{{\Auth::guard('web')->user()->nama}}</b></u></i></label><br />
             <textarea type="text" name="isikomentar" class="form-control" id="validationDefault04" placeholder="Masukkan Komentar..."  required></textarea>
