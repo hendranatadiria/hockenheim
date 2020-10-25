@@ -12,15 +12,8 @@
     <div class="row justify-content-center">
       <div class="col-lg-4.5 pb-3">
         <img src="/img/{{$post->file_gambar}}" alt="gambar" width="400px;">
-
       </div>
     </div>
-
-    <div id="B">
-      <div class="row text-center">
-        <div class="col-md-6 offset-md-3 mb-5">
-          <div class="col text-justify">
-            <p>Jika suatu saat nanti bukan kita yang akan bersama aku ingin kamu menjadi seperti bunga, walaupun daunnya telah gugur dan pergi dihembus lembut dengan angin, namun bunganya tetap tumbuh dengan indah dan selalu bertahan sampai ada seseorang yang memetiknya.
 
         <div class="col-md-6 offset-md-3">
           <div class="col text-justify">
