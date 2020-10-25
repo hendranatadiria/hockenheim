@@ -1,6 +1,5 @@
-
 @include('pengunjung.header')
-
+<!-- Single Post -->
 <section id="Postingan" class="Postingan pt-5">
   <div class="container">
     <div class="row text-center">
@@ -22,16 +21,13 @@
         <div class="col-md-6 offset-md-3">
           <div class="col text-justify">
             <p>{!! nl2br($post->isipost) !!}
-
             </p>
           </div>
         </div>
       </div>
     </div>
   </div>
-
 </section>
-
 
 <!-- List Comment -->
 <div class="container">
@@ -39,6 +35,8 @@
 
     <div class="col-md-6 offset-md-3">
     <div class="form-row pt-2">
+      <h4 class="pt-4">Komentar</h4>
+      </div>
       <h4 class="pt-4 mt-4">Komentar</h4>
           </div>
         @php $isOwnPost = $post->idpenulis == \Auth::guard('web')->user()->idpenulis; @endphp
@@ -80,23 +78,18 @@
               <hr>
             </div>
           </div>
-
-        </div>
-      </form>
-    </div>
-  </div>
-</section>
         </div>--}}
         </form>
       @endforeach
-    </div>
-</div>
 
 <!--Komentar -->
 <section id="contact" class="contact bg-light pt-2">
     <div class="container">
       <!-- Form -->
       <div class="col-md-6 offset-md-3">
+      <div class="form-row pt-2">
+      <h4 class="pt-4">Berikan Komentar</h4>
+      </div>
       @if(\Auth::guard('web')->check())
         <form action="/post/{{$post->idpost}}/komentar" method="POST">
         <div class="form-row pt-2">
