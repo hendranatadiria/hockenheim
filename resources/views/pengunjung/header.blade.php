@@ -15,6 +15,7 @@
 </head>
 <body class="mt-5">
 
+
   <!-- Navbar -->
   <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-warning">
     <div class="container-fluid">
@@ -30,12 +31,6 @@
           </li>
           <li class="nav-item {{ request()->segment(1)=='post'?'active':''}}">
             <a class="nav-link" href="/post">Postingan</a>
-
-          <li class="nav-item">
-            <a class="nav-link" href="index.blade.php">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="singlepost.blade.php">Postingan</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/mypost">Postingan Saya</a>
@@ -65,27 +60,6 @@
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <li class="nav-item {{ request()->segment(1)==''?'active':''}} {{ request()->segment(1)=='home'?'active':''}}">
-            <a class="nav-link" href="/">Home</a>
-          </li>
-          <li class="nav-item {{ request()->segment(1)=='post'?'active':''}}">
-            <a class="nav-link" href="/post">Postingan</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/contact">Postingan Saya</a>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0 " action="/search">
-          <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-dark my-2 my-sm-0 mr" type="submit">Search</button>
-        </form>
-        @php
-            $user = \Auth::guard('web')->user();
-        @endphp
-        @if($user!==null)
-        <ul class="navbar-nav">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               {{\Illuminate\Support\Str::limit($user->nama, 35, $end='...')}}
 
             </a>
@@ -94,12 +68,6 @@
               <div class="dropdown-divider"></div>
 
               <a class="dropdown-item" href="#">Keluar</a>
-            </div>
-          </li>
-        </ul>
-
-
-              <a class="dropdown-item" href="/logout">Keluar</a>
             </div>
           </li>
         </ul>
