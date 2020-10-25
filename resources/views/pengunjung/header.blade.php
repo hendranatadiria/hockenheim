@@ -26,33 +26,26 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item {{ request()->segment(1)==''?'active':''}} {{ request()->segment(1)=='home'?'active':''}}">
-            <a class="nav-link" href="/">Home</a>
-          </li>
-          <li class="nav-item {{ request()->segment(1)=='post'?'active':''}}">
-            <a class="nav-link" href="/post">Postingan</a>
-
-          <li class="nav-item">
-            <a class="nav-link" href="index.blade.php">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="singlepost.blade.php">Postingan</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/mypost">Postingan Saya</a>
-          </li>
-        </ul>
-
-        <ul class="navbar-nav">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/bell.png" width="30" height="30" class="mr-2">
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item text-center" href="#">Notifikasi</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">komentar komentar komentar komentar komentar komentar </a>
-            </div>
-          </li>
+            @php
+            $user = \Auth::guard('web')->user();
+            @endphp
+            @if($user!==null)
+              <li class="nav-item {{ request()->segment(1)==''?'active':''}} {{ request()->segment(1)=='home'?'active':''}}">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+              <li class="nav-item {{ request()->segment(1)=='post'?'active':''}}">
+                <a class="nav-link" href="/post">Postingan</a>
+            @else
+              <li class="nav-item">
+                <a class="nav-link" href="index.blade.php">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="singlepost.blade.php">Postingan</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/mypost">Postingan Saya</a>
+              </li>
+            @endif
         </ul>
 
         <form class="form-inline my-2 my-lg-0 " action="/search">
