@@ -10,12 +10,12 @@
 
       <div class="row pt-3">
 	  @foreach($post as $data)
-        <div class="col-md">
+        <div class="col-md-6">
           <div class="card text-right">
             <img src="img/bc.jpg" class="card-img-top" alt="gambar">
             <div class="card-body">
               <h5 class="card-title text-center">{{$data->nama}}</h5>
-              <p class="card-text text-center">berisi tentang kumpulan {{$data->nama}}</p>
+              <p class="card-text text-center">Berisi tentang kumpulan {{$data->nama}}</p>
               <a href="/kategori/{{$data->idkategori}}"  class="btn btn-success">Lihat Selengkapnya</a>
             </div>
           </div>

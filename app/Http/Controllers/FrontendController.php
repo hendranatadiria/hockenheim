@@ -25,6 +25,12 @@ class FrontendController extends Controller
         return view('pengunjung.singlepost', compact('post', 'komentar'));
     }
 
+    public function listPost() {
+        $post = Kategori::all();
+
+        return view('postlist', compact('post'));
+    }
+
     public function cariPost(Request $request){
         $post = Post::where('judul', 'like', '%'.$request->q.'%')->orWhere('isipost', 'like', '%'.$request->q.'%')->get();
 
