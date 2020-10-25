@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kategori;
+use App\Models\Penulis;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -12,6 +13,11 @@ class AdminController extends Controller
         $post = Kategori::orderByDesc('created_at')->get();
 
         return view('dashboard', compact('post'));
+    }
+
+    public function listPenulis(){
+        $penulis = Penulis::all();
+        return view('admin.daftarpenulis', compact('penulis'));
     }
 
     public function tambahKategori(){

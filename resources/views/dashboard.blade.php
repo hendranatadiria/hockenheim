@@ -11,8 +11,8 @@
       <div class="row text-center pt-2">
         <div class="col-md-8 offset-md-2">
           <div class="col mr-auto">
-            <a href="/daftarpenulis" button type="button" class="btn btn-outline-info btn-lg" ><img src="img/writing.png" width="60" height="60" class="mr-3">Daftar Penulis</button>
-            <a href="/daftarkategori" button type="button" class="btn btn-outline-info btn-lg ml-3" ><img src="img/clipboard.png" width="60" height="60" class="mr-3 ">Daftar Kategori</button>
+            <a href="/admin/penulis/daftar" button type="button" class="btn btn-outline-info btn-lg" ><img src="img/writing.png" width="60" height="60" class="mr-3">Daftar Penulis</button>
+            <a href="/admin/kategori/daftar" button type="button" class="btn btn-outline-info btn-lg ml-3" ><img src="img/clipboard.png" width="60" height="60" class="mr-3 ">Daftar Kategori</button>
           </div>
         </div>
       </div>

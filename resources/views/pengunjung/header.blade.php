@@ -29,16 +29,17 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             @php
-            $user = \Auth::guard('web')->user();
+            $userweb = Auth::guard('web')->user();
+            $useradmin = Auth::guard('admin')->user();
             @endphp
-            @if($user==null)
+            @if($useradmin==null && $userweb == null)
               <li class="nav-item {{ request()->segment(1)==''?'active':''}} {{ request()->segment(1)=='home'?'active':''}}">
                 <a class="nav-link" href="/">Home</a>
               </li>
               <li class="nav-item {{ request()->segment(1)=='post'?'active':''}}">
                 <a class="nav-link" href="/post">Postingan</a>
 
-            @elseif($user == Auth::guard('web')->user())
+            @elseif($useradmin==null)
 
               <li class="nav-item">
                 <a class="nav-link" href="/">Home</a>
@@ -53,16 +54,13 @@
                 <a class="nav-link" href="/mypost">Postingan Saya</a>
               </li>
 
-            @elseif($user == Auth::guard('admin')->user())
+            @elseif($userweb == null)
 
                 <li class="nav-item">
                     <a class="nav-link" href="/admin">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/admin/kategori/tambah">Tambah Kategori</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/kategori/edit/">Edit Kategori</a>
                 </li>
             @endif
         </ul>

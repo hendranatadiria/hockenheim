@@ -40,7 +40,8 @@ Route::get('/admin/logout', [LoginController::class, 'logoutAdmin']);
 
 Route::middleware('auth:admin')->group(function () {
     Route::get('/admin', [AdminController::class, 'index']);
-    Route::get('/admin/kategori', [AdminController::class, 'listKategori']);
+    Route::get('/admin/penulis/daftar', [AdminController::class, 'listPenulis']);
+    Route::get('/admin/kategori/daftar', [AdminController::class, 'listKategori']);
     Route::get('/admin/kategori/tambah', [AdminController::class, 'tambahKategori'])->name('admin.addcategory');
     Route::post('/admin/kategori/tambah', [AdminController::class, 'simpanKategori'])->name('admin.addcategory');
     Route::get('/admin/kategori/edit/{id}', [AdminController::class, 'editKategori'])->name('admin.editkategori');

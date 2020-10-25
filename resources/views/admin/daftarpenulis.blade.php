@@ -1,4 +1,4 @@
-@include(pengunjung.header)
+@include('pengunjung.header')
 <!-- Daftar penulis -->
 <section id="dftrpenulis" class="dftrpenulis pb-4">
   <div class="p-5 container-fluid">
@@ -37,4 +37,4 @@
     </div>
   </div>
 </section>
-@include(pengunjung.footer)
+@include('pengunjung.footer')
