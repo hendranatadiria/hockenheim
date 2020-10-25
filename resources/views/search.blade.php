@@ -1,5 +1,6 @@
 
 @include('pengunjung.header')
+
 <!-- Search result -->
 <section id="result" class="result bg-light pb-5">
   <div class="pb-3">
