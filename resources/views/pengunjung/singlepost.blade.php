@@ -5,7 +5,7 @@
     <div class="row text-center">
       <div class="col">
         <h2>{{$post->judul}}</h2>
-        <p class="mt-3">Penulis: {{$post->penulis->nama}} </p>
+        <p class="mt-3">Penulis: {{$post->nama}} </p>
       </div>
     </div>
 
