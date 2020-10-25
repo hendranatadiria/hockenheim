@@ -9,7 +9,7 @@
       </div>
 
       <div class="row pt-3">
-	  @foreach($kategori as $data)
+	  @foreach($post as $data)
         <div class="col-md">
           <div class="card text-right">
             <img src="img/bc.jpg" class="card-img-top" alt="gambar">

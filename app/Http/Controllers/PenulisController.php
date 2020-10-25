@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kategori;
+use App\Models\Penulis;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -61,7 +62,33 @@ class PenulisController extends Controller
 
         }
 
-
         return redirect('/post/'.$post->idpost);
+    }
+
+    public function editAkunPenulis($id){
+        $data = Penulis::where('idpenulis', $id)->firstOrFail();
+
+        if ($data->idpenulis == Auth::guard('web')->user()->idpenulis) {
+
+            return view('editakunpenulis', compact('data'));
+        }
+        return redirect('/post/editAkun/'.$id);
+
+    }
+
+    public function updateAkunPenulis(Request $request, $id){
+        $data = Penulis::where('idpenulis', $id)->firstOrFail();
+        if($data->idpenulis == Auth::guard('web')->user()->idpenulis) {
+            $data->nama = $request->input('nama');
+            $data->kota = $request->input('kota');
+            $data->alamat = $request->input('alamat');
+            $data->no_telp = $request->input('no_telp');
+            $data->email = $request->input('email');
+
+            $data->save();
+
+        }
+
+        return redirect('/post/editAkun/'.$data->idpenulis);
     }
 }
