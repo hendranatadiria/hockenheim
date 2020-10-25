@@ -10,6 +10,7 @@ class Post extends Model
     use HasFactory;
 
     protected $table='Post';
+    protected $primaryKey = 'idpost';
 
     public function penulis() {
         return $this->belongsTo('App\Models\Penulis', 'idpenulis');

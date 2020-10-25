@@ -11,6 +11,8 @@
   <script src="/popper.min.js"></script>
   <script src="/bootstrap dist/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
   <title>Peluang Berbicara</title>
 </head>
 <body class="mt-5">
@@ -26,6 +28,7 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+<<<<<<< HEAD
             @php
             $user = \Auth::guard('web')->user();
             @endphp
@@ -46,19 +49,7 @@
                 <a class="nav-link" href="/mypost">Postingan Saya</a>
               </li>
             @endif
-        </ul>
-
-        <form class="form-inline my-2 my-lg-0 " action="/search">
-          <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-dark my-2 my-sm-0 mr" type="submit">Search</button>
-        </form>
-        @php
-            $user = \Auth::guard('web')->user();
-        @endphp
-        @if($user!==null)
-        <ul class="navbar-nav">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+=======
           <li class="nav-item {{ request()->segment(1)==''?'active':''}} {{ request()->segment(1)=='home'?'active':''}}">
             <a class="nav-link" href="/">Home</a>
           </li>
@@ -80,7 +71,9 @@
               <a class="dropdown-item" href="#">komentar komentar komentar komentar komentar komentar </a>
             </div>
           </li>
+>>>>>>> master
         </ul>
+
 
         <form class="form-inline my-2 my-lg-0 " action="/search">
           <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search">
@@ -90,10 +83,35 @@
             $user = \Auth::guard('web')->user();
         @endphp
         @if($user!==null)
+<<<<<<< HEAD
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   {{\Illuminate\Support\Str::limit($user->nama, 35, $end='...')}}
+=======
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{\Illuminate\Support\Str::limit($user->nama, 35, $end='...')}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Edit Akun</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/logout">Keluar</a>
+            </div>
+          </li>
+        </ul>
+        @else
+        <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/login" >
+                Login
+              </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/signup" >
+                  Daftar
+>>>>>>> master
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" href="#">Edit Akun</a>
@@ -117,7 +135,6 @@
                   </li>
               </ul>
         @endif
-
       </div>
     </div>
   </nav>

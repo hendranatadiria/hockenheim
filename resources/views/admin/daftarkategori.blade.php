@@ -1,4 +1,4 @@
-@include(pengunjung.header)
+@include('pengunjung.header')
 <!-- Daftar kategori -->
 <section id="dftrcategory" class="dftrcategory pb-4">
   <div class="p-5 container-fluid">
@@ -8,12 +8,10 @@
         <div class="card-body">
           <br>
           <a href="/dashboard" class="mb-3 btn btn-primary">Dashboard</a>
-          <a href="/addcategory" class="mb-3 btn btn-outline-info ml-2">+ Kategori</a><br><br>
-          <input type="search" name="key" id="key" class="form-control" placeholder="Pencarian...">
+          <a href="/admin/kategori/tambah" class="mb-3 btn btn-outline-info ml-2">+ Kategori</a><br><br>
           <br>
-		  @foreach($kategori as $data)
-          <p>Total Kategori = 
-			($loop->count)
+          <p>Total Kategori =
+			{{$kategori->count()}}
 		  </p>
           <table class="table table-striped">
             <tr>
@@ -25,16 +23,19 @@
               <th>Diubah</th>
               <th>Aksi</th>
             </tr>
+		  @foreach($kategori as $data)
+            <tr>
 				<td>{{$data->idkategori}}</td>
 				<td>{{$data->nama}}</td>
-				<td><!-- ini ngga tau caranya digimanain :(--></td>
-				<td><!-- ini ngga tau caranya digimanain :(--></td>
+				<td>{{$data->post()->count()}}</td>
+				<td>{{$data->post()->groupBy('idpenulis')->count()}}</td>
 				<td>{{$data->created_at}}</td>
 				<td>{{$data->updated_at}}</td>
 				<td>
-				  <a class="btn btn-warning btn-sm" href="#">Edit</a>
+				  <a class="btn btn-warning btn-sm" href="/admin/kategori/edit/{{$data->idkategori}}">Edit</a>
 				  <a class="btn btn-danger btn-sm" href="#">Hapus</a>
-				</td>
+                </td>
+            </tr>
 			@endforeach
           </table>
         </div>
@@ -42,4 +43,4 @@
     </div>
   </div>
 </section>
-@include(pengunjung.footer)
+@include('pengunjung.footer')

@@ -11,4 +11,8 @@ class Kategori extends Model
 
     protected $table = 'kategori';
     protected $primaryKey = 'idkategori';
+
+    public function post(){
+        return $this->hasMany('App\Models\Post', 'idkategori');
+    }
 }

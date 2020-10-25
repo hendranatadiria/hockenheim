@@ -1,4 +1,3 @@
-
 @include('pengunjung.header')
 
 <section id="Postingan" class="Postingan pt-5">
@@ -12,13 +11,13 @@
 
     <div class="row justify-content-center">
       <div class="col-lg-4.5 pb-3">
+          @if($post->file_gambar !== null)
         <img src="/img/{{$post->file_gambar}}" alt="gambar" width="400px;">
+        @endif
 
       </div>
     </div>
 
-    <div id="B">
-      <div class="row text-center">
         <div class="col-md-6 offset-md-3">
           <div class="col text-justify">
             <p>{!! nl2br($post->isipost) !!}
@@ -38,12 +37,10 @@
     <!-- Form -->
 
     <div class="col-md-6 offset-md-3">
-    <div class="form-row pt-2">
-      <h4 class="pt-4 mt-4">Komentar</h4>
-          </div>
+        <h4 class="pt-4 mt-4">Komentar</h4>
         @php $isOwnPost = $post->idpenulis == \Auth::guard('web')->user()->idpenulis; @endphp
         @foreach($komentar as $data)
-        <form action="{{$isOwnPost?'/post/deletecomment/'.$data->idkomentar:''}}" method="POST">
+        <form action="{{$isOwnPost?'/post/deletecomment/'.$data->idkomentar:''}}"" method="POST">
         <div class="form-row pt-2">
           <label for="listkomen"><b>{{$data->penulis->nama}}</b> pada {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $data->created_at)->format('d F Y, H:i:s')}}</label>
             @if($isOwnPost) @csrf <button class="ml-3 btn btn-sm btn-danger" type="submit">Delete</button>@endif
@@ -63,11 +60,12 @@
             <div class="col-lg-0">
               <form>
                 <div class="form-row pt-2">
+
                   <label for="balaskomen"><b>Username</b></label>
                   <textarea type="text" class="form-control" id="komen" placeholder="Masukkan Komentar..."  required></textarea>
                 </div>
                 <div class="form-row">
-                  <button class="btn btn-dark mt-3 mb-3" type="submit">Comment</button>     
+                  <button class="btn btn-dark mt-3 mb-3" type="submit">Comment</button>
 
                   <label for="balaskomen"><b>{{$data->idpenulis}}</b></label>
                   <textarea type="text" class="form-control" id="komen" placeholder="Masukkan Komentar..."  required></textarea>
@@ -86,6 +84,8 @@
     </div>
   </div>
 </section>
+@include('pengunjung.footer')
+
         </div>--}}
         </form>
       @endforeach
@@ -97,13 +97,11 @@
     <div class="container">
       <!-- Form -->
       <div class="col-md-6 offset-md-3">
+      <h4 class="pt-4">Berikan Komentar</h4>
       @if(\Auth::guard('web')->check())
         <form action="/post/{{$post->idpost}}/komentar" method="POST">
-        <div class="form-row pt-2">
-            <h4 class="pt-4 pr-2">Berikan Komentar</h4>
-          </div>
           <div class="form-row pt-2">
-          @csrf
+              @csrf
             <label for="validationDefault04">Comment as <i><u><b>{{\Auth::guard('web')->user()->nama}}</b></u></i></label><br />
             <textarea type="text" name="isikomentar" class="form-control" id="validationDefault04" placeholder="Masukkan Komentar..."  required></textarea>
             <label for="validationDefault04"><small>Komentar yang telah dikirim tidak dapat dihapus kecuali oleh pemilik post.</small></label><br />
