@@ -41,6 +41,10 @@
               <li class="nav-item {{ request()->segment(1)==''?'active':''}} {{ request()->segment(1)=='home'?'active':''}}">
                 <a class="nav-link" href="/">Home</a>
               </li>
+              <li class="nav-item {{ request()->segment(2)=='tambah'?'active':''}}">
+              <li class="nav-item">
+                  <a class="nav-link" href="/post/tambah">Buat Postingan Baru</a>
+              </li>
               <li class="nav-item {{ request()->segment(1)=='post'?'active':''}}">
                 <a class="nav-link" href="/post">Postingan</a>
               </li>
@@ -67,7 +71,7 @@
               {{\Illuminate\Support\Str::limit($user->nama, 35, $end='...')}}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Edit Akun</a>
+              <a class="dropdown-item" href="/post/editAkun">Edit Akun</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="/logout">Keluar</a>
             </div>
