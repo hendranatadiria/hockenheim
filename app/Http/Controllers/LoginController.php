@@ -61,6 +61,8 @@ class LoginController extends Controller
     public function logout(){
         if (Auth::guard('web')->check()) {
             Auth::guard('web')->logout();
+
+            Auth::logout();
         }
         return redirect('/login');
     }
@@ -68,7 +70,9 @@ class LoginController extends Controller
     public function logoutAdmin(){
         if(Auth::guard('admin')->check()) {
             Auth::guard('admin')->logout();
+
+            Auth::logout();
         }
-        return redirect('/admin/login');
+        return redirect('/login');
     }
 }
