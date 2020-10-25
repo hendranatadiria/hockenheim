@@ -37,7 +37,9 @@
               </li>
               <li class="nav-item {{ request()->segment(1)=='post'?'active':''}}">
                 <a class="nav-link" href="/post">Postingan</a>
-            @else
+
+            @elseif($user == Auth::guard('web')->user())
+
               <li class="nav-item">
                 <a class="nav-link" href="/">Home</a>
               </li>
@@ -50,6 +52,18 @@
               <li class="nav-item">
                 <a class="nav-link" href="/mypost">Postingan Saya</a>
               </li>
+
+            @elseif($user == Auth::guard('admin')->user())
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/kategori/tambah">Tambah Kategori</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/kategori/edit/">Edit Kategori</a>
+                </li>
             @endif
         </ul>
 
@@ -93,7 +107,11 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="/post/editAkun/@php echo $idpenulis; @endphp">Edit Akun</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/logout">Keluar</a>
+                @if($user == Auth::guard('admin')->user())
+                    <a class="dropdown-item" href="/admin/logout">Keluar</a>
+                @else
+                    <a class="dropdown-item" href="/logout">Keluar</a>
+                @endif
             </div>
           </li>
         </ul>

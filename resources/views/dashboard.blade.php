@@ -1,4 +1,4 @@
-@include(pengunjung.header)
+@include('pengunjung.header')
 <!-- dashboard -->
 <section id="dashboard" class="dashboard pt-3">
   <div class="container">
@@ -19,4 +19,4 @@
     </div>
   </div>
 </section>
-@include(pengunjung.footer)
+@include('pengunjung.footer')

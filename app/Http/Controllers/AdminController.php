@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     //
+    public function index() {
+        $post = Kategori::orderByDesc('created_at')->get();
+
+        return view('dashboard', compact('post'));
+    }
+
     public function tambahKategori(){
 
         return view('admin.addcategory');

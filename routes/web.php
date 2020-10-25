@@ -39,16 +39,16 @@ Route::post('/admin/login', [LoginController::class, 'authAdmin']);
 Route::get('/admin/logout', [LoginController::class, 'logoutAdmin']);
 
 Route::middleware('auth:admin')->group(function () {
+    Route::get('/admin', [AdminController::class, 'index']);
     Route::get('/admin/kategori', [AdminController::class, 'listKategori']);
-    Route::get('/admin/kategori/tambah', [AdminController::class, 'tambahKategori']);
-    Route::post('/admin/kategori/tambah', [AdminController::class, 'simpanKategori']);
-    Route::get('/admin/kategori/edit/{id}', [AdminController::class, 'editKategori']);
-    Route::post('/admin/kategori/edit/{id}', [AdminController::class, 'updateKategori']);
+    Route::get('/admin/kategori/tambah', [AdminController::class, 'tambahKategori'])->name('admin.addcategory');
+    Route::post('/admin/kategori/tambah', [AdminController::class, 'simpanKategori'])->name('admin.addcategory');
+    Route::get('/admin/kategori/edit/{id}', [AdminController::class, 'editKategori'])->name('admin.editkategori');
+    Route::post('/admin/kategori/edit/{id}', [AdminController::class, 'updateKategori'])->name('admin.editkategori');
 });
 
 //Frontpage
 Route::get('/', [FrontendController::class, 'index']);
-Route::get('/admin', [FrontendController::class, 'index']);
 Route::get('/post/{id}', [FrontendController::class, 'lihatPost']);
 Route::post('/post/{id}/komentar', [FrontendController::class, 'storeKomentar']);
 Route::post('/post/deletecomment/{id}', [FrontendController::class, 'deleteKomentar']);
