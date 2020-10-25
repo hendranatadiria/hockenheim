@@ -15,6 +15,9 @@
 
       </div>
     </div>
+
+    <div id="B">
+      <div class="row text-center">
         <div class="col-md-6 offset-md-3">
           <div class="col text-justify">
             <p>{!! nl2br($post->isipost) !!}
@@ -34,9 +37,11 @@
     <div class="form-row pt-2">
       <h4 class="pt-4">Komentar</h4>
       </div>
+      <h4 class="pt-4 mt-4">Komentar</h4>
+          </div>
         @php $isOwnPost = $post->idpenulis == \Auth::guard('web')->user()->idpenulis; @endphp
         @foreach($komentar as $data)
-        <form action="{{$isOwnPost?'/post/deletecomment/'.$data->idkomentar:''}}"" method="POST">
+        <form action="{{$isOwnPost?'/post/deletecomment/'.$data->idkomentar:''}}" method="POST">
         <div class="form-row pt-2">
           <label for="listkomen"><b>{{$data->penulis->nama}}</b> pada {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $data->created_at)->format('d F Y, H:i:s')}}</label>
             @if($isOwnPost) @csrf <button class="ml-3 btn btn-sm btn-danger" type="submit">Delete</button>@endif
@@ -56,7 +61,6 @@
             <div class="col-lg-0">
               <form>
                 <div class="form-row pt-2">
-
                   <label for="balaskomen"><b>Username</b></label>
                   <textarea type="text" class="form-control" id="komen" placeholder="Masukkan Komentar..."  required></textarea>
                 </div>
@@ -74,18 +78,9 @@
               <hr>
             </div>
           </div>
-
-        </div>
-      </form>
-    </div>
-  </div>
-</section>
-
         </div>--}}
         </form>
       @endforeach
-    </div>
-</div>
 
 <!--Komentar -->
 <section id="contact" class="contact bg-light pt-2">
@@ -97,8 +92,11 @@
       </div>
       @if(\Auth::guard('web')->check())
         <form action="/post/{{$post->idpost}}/komentar" method="POST">
+        <div class="form-row pt-2">
+            <h4 class="pt-4 pr-2">Berikan Komentar</h4>
+          </div>
           <div class="form-row pt-2">
-              @csrf
+          @csrf
             <label for="validationDefault04">Comment as <i><u><b>{{\Auth::guard('web')->user()->nama}}</b></u></i></label><br />
             <textarea type="text" name="isikomentar" class="form-control" id="validationDefault04" placeholder="Masukkan Komentar..."  required></textarea>
             <label for="validationDefault04"><small>Komentar yang telah dikirim tidak dapat dihapus kecuali oleh pemilik post.</small></label><br />
