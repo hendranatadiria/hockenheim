@@ -98,7 +98,6 @@
         <form action="/post/{{$post->idpost}}/komentar" method="POST">
           <div class="form-row pt-2">
           @csrf
-          <h4 class="pt-4">Berikan Komentar</h4>
             <label for="validationDefault04">Comment as <i><u><b>{{\Auth::guard('web')->user()->nama}}</b></u></i></label><br />
             <textarea type="text" name="isikomentar" class="form-control" id="validationDefault04" placeholder="Masukkan Komentar..."  required></textarea>
             <label for="validationDefault04"><small>Komentar yang telah dikirim tidak dapat dihapus kecuali oleh pemilik post.</small></label><br />
