@@ -23,7 +23,7 @@
 			</div>
 			<div class="mt-4">
                 <button class="btn btn-success " type="submit">Simpan</button>
-                <button class="btn btn-danger" type="submit">Cancel</button>
+                <a class="btn btn-danger" onclick="window.history.back();">Cancel</a>
               </div>
 			</form>
 		  </div>
@@ -35,7 +35,17 @@
 </section>
 <script>
     $(document).ready(function() {
-    $('#isipost').summernote();
+    $('#isipost').summernote({
+        toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['fontname', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link']],
+            ],
+    });
     });
 </script>
 @include('pengunjung.footer')

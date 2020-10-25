@@ -5,7 +5,7 @@
     <div class="row text-center">
       <div class="col">
         <h2>{{$post->judul}}</h2>
-        <p class="mt-3">Penulis: {{$post->penulis->nama}} </p>
+        <p class="mt-3">Penulis: {{$post->penulis->nama}}<br /><small>Terakhir diperbarui: {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $post->updated_at)->format('d F Y, H:i:s')}}</small> </p>
       </div>
     </div>
 
@@ -38,7 +38,7 @@
 
     <div class="col-md-6 offset-md-3">
         <h4 class="pt-4 mt-4">Komentar</h4>
-        @php $isOwnPost = $post->idpenulis == \Auth::guard('web')->user()->idpenulis; @endphp
+        @php $isOwnPost = $post->idpenulis == optional(\Auth::guard('web')->user())->idpenulis; @endphp
         @foreach($komentar as $data)
         <form action="{{$isOwnPost?'/post/deletecomment/'.$data->idkomentar:''}}"" method="POST">
         <div class="form-row pt-2">

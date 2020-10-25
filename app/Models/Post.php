@@ -9,11 +9,15 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $table='Post';
+    protected $table='post';
     protected $primaryKey = 'idpost';
 
     public function penulis() {
         return $this->belongsTo('App\Models\Penulis', 'idpenulis');
+    }
+
+    public function kategori(){
+        return $this->belongsTo('App\Models\Kategori', 'idkategori');
     }
 
 }
