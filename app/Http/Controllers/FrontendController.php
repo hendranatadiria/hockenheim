@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kategori;
 use App\Models\Komentar;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -28,6 +29,13 @@ class FrontendController extends Controller
         $post = Post::where('judul', 'like', '%'.$request->q.'%')->orWhere('isipost', 'like', '%'.$request->q.'%')->get();
 
         return view('search', compact('post'));
+    }
+
+    public function kategoriPost($id){
+        $kategori = Kategori::where('idkategori', $id)->firstOrFail();
+        $post = Post::where('idkategori', $id)->get();
+
+        return view('pengunjung.kategori', compact('post', 'kategori'));
     }
 
     public function storeKomentar(Request $request, $id){

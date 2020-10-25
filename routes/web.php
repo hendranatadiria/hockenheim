@@ -17,12 +17,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Penulis
+//Penulis Auth
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'auth']);
 Route::get('/signup', [LoginController::class, 'signup']);
 Route::post('/signup', [LoginController::class, 'registerPenulis']);
 Route::get('/logout', [LoginController::class, 'logout']);
+
+//Admin Auth
+Route::get('/admin/login', [LoginController::class, 'login'])->name('admin.login');
+Route::post('/admin/login', [LoginController::class, 'authAdmin']);
+Route::get('/admin/logout', [LoginController::class, 'logoutAdmin']);
 
 Route::middleware('auth:web')->group(function () {
     Route::get('/mypost', [PenulisController::class, 'postSaya']);
@@ -35,10 +40,6 @@ Route::middleware('auth:web')->group(function () {
 });
 
 //Admin
-Route::get('/admin/login', [LoginController::class, 'login'])->name('admin.login');
-Route::post('/admin/login', [LoginController::class, 'authAdmin']);
-Route::get('/admin/logout', [LoginController::class, 'logoutAdmin']);
-
 Route::middleware('auth:admin')->group(function () {
     Route::get('/admin', [AdminController::class, 'index']);
     Route::get('/admin/penulis/daftar', [AdminController::class, 'listPenulis']);
@@ -52,6 +53,7 @@ Route::middleware('auth:admin')->group(function () {
 //Frontpage
 Route::get('/', [FrontendController::class, 'index']);
 Route::get('/home', [FrontendController::class, 'index']);
+Route::get('/kategori/{id}', [FrontendController::class, 'kategoriPost']);
 Route::get('/post/{id}', [FrontendController::class, 'lihatPost']);
 Route::post('/post/{id}/komentar', [FrontendController::class, 'storeKomentar']);
 Route::post('/post/deletecomment/{id}', [FrontendController::class, 'deleteKomentar']);

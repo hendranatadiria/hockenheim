@@ -16,13 +16,13 @@
             <div class="card-body">
               <h5 class="card-title text-center">{{$data->nama}}</h5>
               <p class="card-text text-center">berisi tentang kumpulan {{$data->nama}}</p>
-              <a href="kategori/{{$data->idkategori}}"  class="btn btn-success">Lihat Selengkapnya</a>
+              <a href="/kategori/{{$data->idkategori}}"  class="btn btn-success">Lihat Selengkapnya</a>
             </div>
           </div>
         </div>
 		@endforeach
 		{{--
-		
-		--}}    
+
+		--}}
     </section>
 @include('pengunjung.footer')

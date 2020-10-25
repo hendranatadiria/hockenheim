@@ -5,7 +5,7 @@
     <div class="row text-center">
       <div class="col">
         <h2>{{$post->judul}}</h2>
-        <p class="mt-3">Penulis: {{$post->penulis->nama}}<br /><small>Terakhir diperbarui: {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $post->updated_at)->format('d F Y, H:i:s')}}</small> </p>
+        <p class="mt-3">Penulis: {{$post->penulis->nama}}<br /><small>Kategori: <a href="/kategori/{{$post->idkategori}}">{{$post->kategori->nama}}</a> | Terakhir diperbarui: {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $post->updated_at)->format('d F Y, H:i:s')}}</small> </p>
       </div>
     </div>
 

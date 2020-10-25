@@ -8,7 +8,7 @@
       <div class="container container-fluid p-5 mb-5">
         <div class="row mb-4 pt-4">
           <div class="col text-center">
-            <h2>Search Result</h2>
+            <h2>Postingan dengan kategori: {{$kategori->nama}}</h2>
           </div>
         </div>
 
