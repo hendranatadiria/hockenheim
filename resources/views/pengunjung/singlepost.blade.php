@@ -1,4 +1,4 @@
-@include('pengunjung.footer')
+@include('pengunjung.header')
 
 <section id="Postingan" class="Postingan pt-5">
   <div class="container">
