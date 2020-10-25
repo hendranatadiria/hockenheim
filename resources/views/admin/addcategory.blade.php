@@ -1,4 +1,4 @@
-@include(pengunjung.header)
+@include('pengunjung.header')
 <!-- Add kategori -->
 <section id="addcategory" class="addcategory bg-light pb-5">
     <div class="pb-5">
@@ -8,9 +8,10 @@
                     <div class="card-header">Tambah Kategori</div>
                     <div class="card-body">
                         <form method="POST" autocomplete="on" action="">
+                            @csrf
                             <div class="form-group">
                                 <label for="kategori">Nama Kategori</label>
-                                <input type="text" name="kategori" id="kategori" class="form-control" placeholder="Masukkan kategori...">
+                                <input type="text" name="nama" id="kategori" class="form-control" placeholder="Masukkan kategori...">
                             </div>
 
                             <div class="mt-4">
@@ -25,4 +26,4 @@
     </div>
     <br><br><br><br><br><br><br><br><br>
 </section>
-@include(pengunjung.footer)
+@include('pengunjung.footer')

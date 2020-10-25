@@ -1,4 +1,4 @@
-@include(pengunjung.header)
+@include('pengunjung.header')
 <!-- Edit Post -->
 <section id="editpost" class="editpost bg-light pb-4">
     <div class="container-fluid p-5">
@@ -12,14 +12,14 @@
 		<div class="card w-50 m-auto">
 			<div class="card-body h-50">
 			<form method="POST" autocomplete="on" action="">
-			@foreach($post as $data)
+                @csrf
 			<div class="form-group">
 				<label for="judul">Judul</label>
-                <input type="text" name="judul" id="judul" class="form-control" value="{{$data->judul}}">    
+                <input type="text" name="judul" id="judul" class="form-control" value="{{$data->judul}}">
 			</div>
 			<div class="form-group">
 				<label for="isipost">Isi Post</label>
-                <textarea type="text" name="isipost" id="isipost" class="form-control" rows="6"value="{{$data->isipost}}"></textarea>   
+                <textarea type="text" name="isipost" id="isipost" class="form-control" rows="6">{{$data->isipost}}</textarea>
 			</div>
 			<div class="mt-4">
                 <button class="btn btn-success " type="submit">Simpan</button>
@@ -27,11 +27,15 @@
               </div>
 			</form>
 		  </div>
-		  @endforeach
 				{{--
-			
+
 			--}}
 		</div>
 	</div>
 </section>
-@include(pengunjung.footer)
+<script>
+    $(document).ready(function() {
+    $('#isipost').summernote();
+    });
+</script>
+@include('pengunjung.footer')

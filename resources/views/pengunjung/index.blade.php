@@ -46,10 +46,12 @@
         @foreach($post as $data)
         <div class="col-md-3 pt-4">
           <div class="card">
+              @if($data->file_gambar!==null)
             <img src="img/{{$data->file_gambar}}" class="card-img-top" alt="gambar">
+            @endif
             <div class="card-body">
               <h5 class="card-title">{{$data->judul}}</h5>
-              <p class="card-text">{{\Illuminate\Support\Str::limit($data->isipost, 35, $end='...') }}</p>
+              <p class="card-text">{{\Illuminate\Support\Str::limit(strip_tags($data->isipost), 35, $end='...') }}</p>
               <a href="post/{{$data->idpost}}"  class="btn btn-success">Lanjut Baca</a>
             </div>
           </div>
@@ -57,7 +59,7 @@
         @endforeach
         {{--
 
-      
+
       --}}
     </section>
 

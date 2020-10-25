@@ -11,6 +11,8 @@
   <script src="/popper.min.js"></script>
   <script src="/bootstrap dist/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
   <title>Peluang Berbicara</title>
 </head>
 <body class="mt-5">

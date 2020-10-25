@@ -11,7 +11,9 @@
 
     <div class="row justify-content-center">
       <div class="col-lg-4.5 pb-3">
+          @if($post->file_gambar !== null)
         <img src="/img/{{$post->file_gambar}}" alt="gambar" width="400px;">
+        @endif
 
       </div>
     </div>
@@ -63,7 +65,7 @@
                   <textarea type="text" class="form-control" id="komen" placeholder="Masukkan Komentar..."  required></textarea>
                 </div>
                 <div class="form-row">
-                  <button class="btn btn-dark mt-3 mb-3" type="submit">Comment</button>     
+                  <button class="btn btn-dark mt-3 mb-3" type="submit">Comment</button>
 
                   <label for="balaskomen"><b>{{$data->idpenulis}}</b></label>
                   <textarea type="text" class="form-control" id="komen" placeholder="Masukkan Komentar..."  required></textarea>

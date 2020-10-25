@@ -16,10 +16,12 @@
           @forelse($post as $data)
           <div class="col-md-3 pt-4">
             <div class="card">
+                @if($data->file_gambar!== null)
               <img src="img/{{$data->file_gambar}}" class="card-img-top" alt="gambar">
+              @endif
               <div class="card-body">
                 <h5 class="card-title">{{$data->judul}}</h5>
-                <p class="card-text">{{$data->isipost}}</p>
+                <p class="card-text">{{strip_tags($data->isipost)}}</p>
                 <a href="post/{{$data->idpost}}"  class="btn btn-success">Lanjut Baca</a>
               </div>
             </div>
