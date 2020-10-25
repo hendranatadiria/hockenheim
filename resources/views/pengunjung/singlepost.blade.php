@@ -84,8 +84,6 @@
     </div>
   </div>
 </section>
-@include('pengunjung.footer')
-
         </div>--}}
         </form>
       @endforeach
