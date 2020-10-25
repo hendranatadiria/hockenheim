@@ -16,7 +16,7 @@
 
                             <div class="mt-4">
                                 <button class="btn btn-success " type="submit">Tambah</button>
-                                <button class="btn btn-danger" type="submit">Cancel</button>
+                                <button class="btn btn-danger" type="button" onclick="document.location.href=this.getAttribute('href');" href="/admin">Cancel</button>
                             </div>
                         </form>
                     </div>
