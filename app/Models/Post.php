@@ -16,4 +16,8 @@ class Post extends Model
         return $this->belongsTo('App\Models\Penulis', 'idpenulis');
     }
 
+    public function kategori(){
+        return $this->belongsTo('App\Models\Kategori', 'idkategori');
+    }
+
 }

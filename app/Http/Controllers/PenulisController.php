@@ -54,7 +54,7 @@ class PenulisController extends Controller
     public function updatePost(Request $request, $id){
         $post =  Post::where('idpost', $id)->firstOrFail();
         if($post->idpenulis == Auth::guard('web')->user()->idpenulis) {
-            $post->judul = $request->input('title');
+            $post->judul = $request->input('judul');
             $post->isipost = $request->input('isipost');
 
             $post->save();
@@ -63,5 +63,11 @@ class PenulisController extends Controller
 
 
         return redirect('/post/'.$post->idpost);
+    }
+
+    public function postSaya(){
+        $post = Post::where('idpenulis', Auth::guard('web')->user()->idpenulis)->orderByDesc('created_at')->get();
+
+        return view ('penulis.mypost', compact('post'));
     }
 }
