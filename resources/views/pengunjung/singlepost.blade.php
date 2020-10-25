@@ -31,7 +31,9 @@
     <!-- Form -->
 
     <div class="col-md-6 offset-md-3">
-        <h4 class="pt-4 mt-4">Komentar</h4>
+    <div class="form-row pt-2">
+      <h4 class="pt-4">Komentar</h4>
+      </div>
         @php $isOwnPost = $post->idpenulis == \Auth::guard('web')->user()->idpenulis; @endphp
         @foreach($komentar as $data)
         <form action="{{$isOwnPost?'/post/deletecomment/'.$data->idkomentar:''}}"" method="POST">
@@ -91,7 +93,9 @@
     <div class="container">
       <!-- Form -->
       <div class="col-md-6 offset-md-3">
+      <div class="form-row pt-2">
       <h4 class="pt-4">Berikan Komentar</h4>
+      </div>
       @if(\Auth::guard('web')->check())
         <form action="/post/{{$post->idpost}}/komentar" method="POST">
           <div class="form-row pt-2">
