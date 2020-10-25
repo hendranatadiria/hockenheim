@@ -28,7 +28,6 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-<<<<<<< HEAD
             @php
             $user = \Auth::guard('web')->user();
             @endphp
