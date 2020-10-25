@@ -24,6 +24,7 @@
         <div class="col-md pt-4 text-center">
             <h5>Tidak ada hasil ditemukan.</h5>
           </div>
+          <br><br><br><br><br><br><br><br><br><br>
         @endforelse
         {{--
       --}}
