@@ -5,7 +5,7 @@
     <div class="row text-center">
       <div class="col">
         <h2>{{$post->judul}}</h2>
-        <p class="mt-3">Penulis: {{$post->nama}} </p>
+        <p class="mt-3">Penulis: {{$post->penulis->nama}} </p>
       </div>
     </div>
 
@@ -40,7 +40,7 @@
         <h4 class="pt-4 mt-4">Komentar</h4>
         @php $isOwnPost = $post->idpenulis == \Auth::guard('web')->user()->idpenulis; @endphp
         @foreach($komentar as $data)
-        <form action="{{$isOwnPost?'/post/deletecomment/'.$data->idkomentar:''}}"" method="POST">
+        <form action="{{$isOwnPost?'/post/deletecomment/'.$data->idkomentar:''}}" method="POST">
         <div class="form-row pt-2">
           <label for="listkomen"><b>{{$data->penulis->nama}}</b> pada {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $data->created_at)->format('d F Y, H:i:s')}}</label>
             @if($isOwnPost) @csrf <button class="ml-3 btn btn-sm btn-danger" type="submit">Delete</button>@endif
