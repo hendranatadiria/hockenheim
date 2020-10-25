@@ -25,7 +25,7 @@
     </div>
   </div>
 </section>
-
+@include('pengunjung.header')
 <!-- List Comment -->
 <div class="container">
     <!-- Form -->
