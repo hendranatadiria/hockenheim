@@ -53,7 +53,7 @@
           <button class="btn btn-outline-dark my-2 my-sm-0 mr" type="submit">Search</button>
         </form>
         @php
-            $user = \Auth::guard('admin')->user();
+            $user = \Auth::guard('web')->user();
         @endphp
         @if($user!==null)
             <ul class="navbar-nav">
