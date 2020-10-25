@@ -78,7 +78,7 @@ class PenulisController extends Controller
 
             return view('editakunpenulis', compact('data'));
         }
-        return redirect('/post/editAkun/'.$id);
+        return redirect('/post/editAkun/'.Auth::guard('web')->user()->idpenulis);
 
     }
 

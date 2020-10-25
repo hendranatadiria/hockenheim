@@ -29,15 +29,18 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             @php
-            $user = \Auth::guard('web')->user();
+            $userweb = Auth::guard('web')->user();
+            $useradmin = Auth::guard('admin')->user();
             @endphp
-            @if($user==null)
+            @if($useradmin==null && $userweb == null)
               <li class="nav-item {{ request()->segment(1)==''?'active':''}} {{ request()->segment(1)=='home'?'active':''}}">
                 <a class="nav-link" href="/">Home</a>
               </li>
               <li class="nav-item {{ request()->segment(1)=='post'?'active':''}}">
                 <a class="nav-link" href="/post">Postingan</a>
-            @else
+                
+            @elseif($useradmin==null)
+            
               <li class="nav-item {{ request()->segment(1)==''?'active':''}} {{ request()->segment(1)=='home'?'active':''}}">
                 <a class="nav-link" href="/">Home</a>
               </li>
@@ -51,6 +54,15 @@
               <li class="nav-item {{ request()->segment(1)=='mypost'?'active':''}}">
                 <a class="nav-link" href="/mypost">Postingan Saya</a>
               </li>
+
+            @elseif($userweb == null)
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/kategori/tambah">Tambah Kategori</a>
+                </li>
             @endif
         </ul>
 
@@ -64,6 +76,17 @@
         @php
             $user = \Auth::guard('web')->user();
         @endphp
+        @if($user != null)
+        @php
+        $idpenulis = \Auth::guard('web')->user()->idpenulis;
+        $user = \Auth::guard('web')->user();
+        @endphp
+        @else
+        @php
+        $user = \Auth::guard('admin')->user();
+        $idpenulis = \Auth::guard('admin')->user()->idadmin;
+        @endphp
+        @endif
         @if($user!==null)
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
@@ -71,9 +94,13 @@
               {{\Illuminate\Support\Str::limit($user->nama, 35, $end='...')}}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/post/editAkun">Edit Akun</a>
+              <a class="dropdown-item" href="/post/editAkun/@php echo $idpenulis; @endphp">Edit Akun</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/logout">Keluar</a>
+                @if($user == Auth::guard('admin')->user())
+                    <a class="dropdown-item" href="/admin/logout">Keluar</a>
+                @else
+                    <a class="dropdown-item" href="/logout">Keluar</a>
+                @endif
             </div>
           </li>
         </ul>

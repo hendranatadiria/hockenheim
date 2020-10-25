@@ -36,7 +36,7 @@ class LoginController extends Controller
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->intended('/admin');
         }
-        return redirect('/admin/login')->with('error','Invalid login credentials');
+        return redirect('/login')->with('error','Invalid login credentials');
     }
 
     public function signup(){
@@ -95,33 +95,5 @@ class LoginController extends Controller
             Auth::logout();
         }
         return redirect('/login');
-    }
-
-    public function editAkunPenulis($id){
-        $data = Penulis::where('idpenulis', $id)->firstOrFail();
-        //$penulis = $data->penulis;
-
-        if ($data->idpenulis == Auth::guard('web')->user()->idpenulis) {
-
-            return view('editakunpenulis', compact('data'));
-        }
-        return redirect('/post/editAkun/'.$id);
-
-    }
-
-    public function updateAkunPenulis(Request $request, $id){
-        $data = Penulis::where('idpenulis', $id)->firstOrFail();
-        if($data->idpenulis == Auth::guard('web')->user()->idpenulis) {
-            $data->nama = $request->input('nama');
-            $data->kota = $request->input('kota');
-            $data->alamat = $request->input('alamat');
-            $data->no_telp = $request->input('no_telp');
-            $data->email = $request->input('email');
-
-            $data->save();
-
-        }
-
-        return redirect('/post/editAkun/'.$data->idpenulis);
     }
 }

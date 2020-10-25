@@ -14,7 +14,7 @@
 </head>
 <style>
   body{
-    background-image: url(/img/2244.jpg);
+    background-image: url(//img/2244.jpg);
     background-size: 2000px;
   }
 
