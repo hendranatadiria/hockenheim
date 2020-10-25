@@ -37,7 +37,7 @@
     <!-- Form -->
 
     <div class="col-md-6 offset-md-3">
-        <h4 class="pt-4 mt-4 pr-5">Komentar</h4>
+        <h4 class="pt-4 mt-4">Komentar</h4>
         @php $isOwnPost = $post->idpenulis == \Auth::guard('web')->user()->idpenulis; @endphp
         @foreach($komentar as $data)
         <form action="{{$isOwnPost?'/post/deletecomment/'.$data->idkomentar:''}}"" method="POST">
@@ -60,7 +60,6 @@
             <div class="col-lg-0">
               <form>
                 <div class="form-row pt-2">
-
                   <label for="balaskomen"><b>Username</b></label>
                   <textarea type="text" class="form-control" id="komen" placeholder="Masukkan Komentar..."  required></textarea>
                 </div>
@@ -95,8 +94,8 @@
     <div class="container">
       <!-- Form -->
       <div class="col-md-6 offset-md-3">
-      <h4 class="pt-4">Berikan Komentar</h4>
       @if(\Auth::guard('web')->check())
+      <h4 class="pt-4">Berikan Komentar</h4>
         <form action="/post/{{$post->idpost}}/komentar" method="POST">
           <div class="form-row pt-2">
               @csrf
