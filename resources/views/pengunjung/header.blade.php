@@ -72,9 +72,22 @@
             <a class="nav-link" href="/post">Postingan</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/contact">Postingan Saya</a>
+            <a class="nav-link" href="/mypost">Postingan Saya</a>
           </li>
         </ul>
+
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/bell.png" width="30" height="30" class="mr-2">
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item text-center" href="#">Notifikasi</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">komentar komentar komentar komentar komentar komentar </a>
+            </div>
+          </li>
+        </ul>
+
         <form class="form-inline my-2 my-lg-0 " action="/search">
           <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-dark my-2 my-sm-0 mr" type="submit">Search</button>
@@ -97,8 +110,6 @@
             </div>
           </li>
         </ul>
-
-
               <a class="dropdown-item" href="/logout">Keluar</a>
             </div>
           </li>
