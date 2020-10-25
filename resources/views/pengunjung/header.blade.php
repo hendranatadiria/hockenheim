@@ -40,25 +40,15 @@
                 <a class="nav-link" href="/post">Postingan</a>
             @else
               <li class="nav-item">
-                <a class="nav-link" href="index.blade.php">Home</a>
+                <a class="nav-link" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="singlepost.blade.php">Postingan</a>
+                <a class="nav-link" href="/post">Postingan</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/mypost">Postingan Saya</a>
               </li>
             @endif
-=======
-          <li class="nav-item {{ request()->segment(1)==''?'active':''}} {{ request()->segment(1)=='home'?'active':''}}">
-            <a class="nav-link" href="/">Home</a>
-          </li>
-          <li class="nav-item {{ request()->segment(1)=='post'?'active':''}}">
-            <a class="nav-link" href="/post">Postingan</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/mypost">Postingan Saya</a>
-          </li>
         </ul>
 
         <ul class="navbar-nav">
@@ -71,7 +61,6 @@
               <a class="dropdown-item" href="#">komentar komentar komentar komentar komentar komentar </a>
             </div>
           </li>
->>>>>>> master
         </ul>
 
 
@@ -83,12 +72,6 @@
             $user = \Auth::guard('web')->user();
         @endphp
         @if($user!==null)
-<<<<<<< HEAD
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  {{\Illuminate\Support\Str::limit($user->nama, 35, $end='...')}}
-=======
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -111,29 +94,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/signup" >
                   Daftar
->>>>>>> master
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">Edit Akun</a>
-                  <div class="dropdown-divider"></div>
-
-                  <a class="dropdown-item" href="/logout">Keluar</a>
-                </div>
-              </li>
-            </ul>
-        @else
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="/login" >
-                    Login
-                  </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/signup" >
-                      Daftar
-                    </a>
-                  </li>
-              </ul>
+            </li>
+        </ul>
         @endif
       </div>
     </div>
