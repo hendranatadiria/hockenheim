@@ -1,120 +1,88 @@
-@include('pengunjung.header')
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/bootstrap dist/css/bootstrap.min.css">
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="/jquery.min.js"></script>
+  <script src="/popper.min.js"></script>
+  <script src="/bootstrap dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <title>Peluang Berbicara</title>
+</head>
+<body class="mt-5">
 
-<section id="Postingan" class="Postingan pt-5">
-  <div class="container">
-    <div class="row text-center">
-      <div class="col">
-        <h2>{{$post->judul}}</h2>
-        <p class="mt-3">Penulis: {{$post->penulis->nama}} </p>
-      </div>
-    </div>
+  <!-- Navbar -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-warning">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Peluang Berbicara</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div class="row justify-content-center">
-      <div class="col-lg-4.5 pb-3">
-        <img src="/img/{{$post->file_gambar}}" alt="gambar" width="400px;">
-      </div>
-    </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item {{ request()->segment(1)==''?'active':''}} {{ request()->segment(1)=='home'?'active':''}}">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item {{ request()->segment(1)=='post'?'active':''}}">
+            <a class="nav-link" href="/post">Postingan</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/mypost">Postingan Saya</a>
+          </li>
+        </ul>
 
-        <div class="col-md-6 offset-md-3">
-          <div class="col text-justify">
-            <p>{!! nl2br($post->isipost) !!}
-
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-
-<!-- List Comment -->
-<div class="container">
-    <!-- Form -->
-
-    <div class="col-md-6 offset-md-3">
-        <h4 class="pt-4 mt-4">Komentar</h4>
-        @php $isOwnPost = $post->idpenulis == \Auth::guard('web')->user()->idpenulis; @endphp
-        @foreach($komentar as $data)
-        <form action="{{$isOwnPost?'/post/deletecomment/'.$data->idkomentar:''}}"" method="POST">
-        <div class="form-row pt-2">
-          <label for="listkomen"><b>{{$data->penulis->nama}}</b> pada {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $data->created_at)->format('d F Y, H:i:s')}}</label>
-            @if($isOwnPost) @csrf <button class="ml-3 btn btn-sm btn-danger" type="submit">Delete</button>@endif
-        </div>
-        <div class="form-row pt-2 pb-4">
-          <label for="isi">{!!nl2br($data->isi)!!}</label>
-        </div>
-        {{--<p>
-
-          <a class="" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-            Reply
-          </a>
-        </p>
-        <div class="collapse" id="collapseExample">
-          <div class="container">
-            <!-- Form -->
-            <div class="col-lg-0">
-              <form>
-                <div class="form-row pt-2">
-
-                  <label for="balaskomen"><b>Username</b></label>
-                  <textarea type="text" class="form-control" id="komen" placeholder="Masukkan Komentar..."  required></textarea>
-                </div>
-                <div class="form-row">
-                  <button class="btn btn-dark mt-3 mb-3" type="submit">Comment</button>     
-
-                  <label for="balaskomen"><b>{{$data->idpenulis}}</b></label>
-                  <textarea type="text" class="form-control" id="komen" placeholder="Masukkan Komentar..."  required></textarea>
-                </div>
-                <div class="form-row">
-                  <a href="post/{{$data->idkomentar}}" button class="btn btn-dark mt-3 mb-3" type="submit">Comment</button>
-
-                </div>
-              </form>
-              <hr>
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="img/bell.png" width="30" height="30" class="mr-2">
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item text-center" href="#">Notifikasi</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">komentar komentar komentar komentar komentar komentar </a>
             </div>
-          </div>
+          </li>
+        </ul>
 
-        </div>
-      </form>
-    </div>
-  </div>
-</section>
-@include('pengunjung.footer')
 
-        </div>--}}
+        <form class="form-inline my-2 my-lg-0 " action="/search">
+          <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-dark my-2 my-sm-0 mr" type="submit">Search</button>
         </form>
-      @endforeach
-    </div>
-</div>
-
-<!--Komentar -->
-<section id="contact" class="contact bg-light pt-2">
-    <div class="container">
-      <!-- Form -->
-      <div class="col-md-6 offset-md-3">
-      <h4 class="pt-4">Berikan Komentar</h4>
-      @if(\Auth::guard('web')->check())
-        <form action="/post/{{$post->idpost}}/komentar" method="POST">
-          <div class="form-row pt-2">
-              @csrf
-            <label for="validationDefault04">Comment as <i><u><b>{{\Auth::guard('web')->user()->nama}}</b></u></i></label><br />
-            <textarea type="text" name="isikomentar" class="form-control" id="validationDefault04" placeholder="Masukkan Komentar..."  required></textarea>
-            <label for="validationDefault04"><small>Komentar yang telah dikirim tidak dapat dihapus kecuali oleh pemilik post.</small></label><br />
-          </div>
-          <div class="form-row">
-            <button class="btn btn-dark mt-3 mb-5" type="submit">Kirim</button>
-          </div>
-        </form>
-      @else
-      <label for="validationDefault04"><small>Hanya user terdaftar yang bisa memberi komentar.</small></label><br />
-      @endif
+        @php
+            $user = \Auth::guard('web')->user();
+        @endphp
+        @if($user!==null)
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{\Illuminate\Support\Str::limit($user->nama, 35, $end='...')}}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Edit Akun</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/logout">Keluar</a>
+            </div>
+          </li>
+        </ul>
+        @else
+        <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/login" >
+                Login
+              </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/signup" >
+                  Daftar
+                </a>
+              </li>
+          </ul>
+        @endif
       </div>
     </div>
-  </div>
-  </section>
-
-
-@include('pengunjung.footer')
-
+  </nav>
