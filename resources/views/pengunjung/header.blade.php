@@ -73,6 +73,17 @@
         @php
             $user = \Auth::guard('web')->user();
         @endphp
+        @if($user != null)
+        @php
+        $idpenulis = \Auth::guard('web')->user()->idpenulis;
+        $user = \Auth::guard('web')->user();
+        @endphp
+        @else
+        @php
+        $user = \Auth::guard('admin')->user();
+        $idpenulis = \Auth::guard('admin')->user()->idadmin;
+        @endphp
+        @endif
         @if($user!==null)
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
@@ -80,7 +91,7 @@
               {{\Illuminate\Support\Str::limit($user->nama, 35, $end='...')}}
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/post/editAkun">Edit Akun</a>
+              <a class="dropdown-item" href="/post/editAkun/@php echo $idpenulis; @endphp">Edit Akun</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="/logout">Keluar</a>
             </div>

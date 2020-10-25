@@ -96,32 +96,4 @@ class LoginController extends Controller
         }
         return redirect('/login');
     }
-
-    public function editAkunPenulis($id){
-        $data = Penulis::where('idpenulis', $id)->firstOrFail();
-        //$penulis = $data->penulis;
-
-        if ($data->idpenulis == Auth::guard('web')->user()->idpenulis) {
-
-            return view('editakunpenulis', compact('data'));
-        }
-        return redirect('/post/editAkun/'.$id);
-
-    }
-
-    public function updateAkunPenulis(Request $request, $id){
-        $data = Penulis::where('idpenulis', $id)->firstOrFail();
-        if($data->idpenulis == Auth::guard('web')->user()->idpenulis) {
-            $data->nama = $request->input('nama');
-            $data->kota = $request->input('kota');
-            $data->alamat = $request->input('alamat');
-            $data->no_telp = $request->input('no_telp');
-            $data->email = $request->input('email');
-
-            $data->save();
-
-        }
-
-        return redirect('/post/editAkun/'.$data->idpenulis);
-    }
 }

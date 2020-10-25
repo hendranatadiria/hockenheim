@@ -48,6 +48,7 @@ Route::middleware('auth:admin')->group(function () {
 
 //Frontpage
 Route::get('/', [FrontendController::class, 'index']);
+Route::get('/admin', [FrontendController::class, 'index']);
 Route::get('/post/{id}', [FrontendController::class, 'lihatPost']);
 Route::post('/post/{id}/komentar', [FrontendController::class, 'storeKomentar']);
 Route::post('/post/deletecomment/{id}', [FrontendController::class, 'deleteKomentar']);
