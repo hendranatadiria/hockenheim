@@ -28,15 +28,26 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item {{ request()->segment(1)==''?'active':''}} {{ request()->segment(1)=='home'?'active':''}}">
-            <a class="nav-link" href="/">Home</a>
-          </li>
-          <li class="nav-item {{ request()->segment(1)=='post'?'active':''}}">
-            <a class="nav-link" href="/post">Postingan</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/mypost">Postingan Saya</a>
-          </li>
+            @php
+            $user = \Auth::guard('web')->user();
+            @endphp
+            @if($user==null)
+              <li class="nav-item {{ request()->segment(1)==''?'active':''}} {{ request()->segment(1)=='home'?'active':''}}">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+              <li class="nav-item {{ request()->segment(1)=='post'?'active':''}}">
+                <a class="nav-link" href="/post">Postingan</a>
+            @else
+              <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/post">Postingan</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/mypost">Postingan Saya</a>
+              </li>
+            @endif
         </ul>
 
         <ul class="navbar-nav">
@@ -83,8 +94,8 @@
                 <a class="nav-link" href="/signup" >
                   Daftar
                 </a>
-              </li>
-          </ul>
+            </li>
+        </ul>
         @endif
       </div>
     </div>
