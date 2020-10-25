@@ -48,9 +48,6 @@
               <li class="nav-item">
                   <a class="nav-link" href="/post/tambah">Buat Postingan Baru</a>
               </li>
-              <li class="nav-item {{ request()->segment(1)=='post'?'active':''}}">
-                <a class="nav-link" href="/post">Postingan</a>
-              </li>
               <li class="nav-item {{ request()->segment(1)=='mypost'?'active':''}}">
                 <a class="nav-link" href="/mypost">Postingan Saya</a>
               </li>

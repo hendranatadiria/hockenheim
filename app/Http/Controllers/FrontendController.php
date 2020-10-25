@@ -18,6 +18,12 @@ class FrontendController extends Controller
         return view('pengunjung.index', compact('post'));
     }
 
+    public function listPost() {
+        $post = Post::orderByDesc('created_at')->get();
+
+        return view('postlist', compact('post'));
+    }
+
     public function lihatPost($id) {
         $post = Post::where('idpost', $id)->firstOrFail();
         $komentar = Komentar::where('idpost', $id)->get();

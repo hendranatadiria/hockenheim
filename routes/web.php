@@ -57,6 +57,7 @@ Route::middleware('auth:admin')->group(function () {
 Route::get('/', [FrontendController::class, 'index']);
 Route::get('/home', [FrontendController::class, 'index']);
 Route::get('/kategori/{id}', [FrontendController::class, 'kategoriPost']);
+Route::get('/post', [FrontendController::class, 'listPost']);
 Route::get('/post/{id}', [FrontendController::class, 'lihatPost']);
 Route::post('/post/{id}/komentar', [FrontendController::class, 'storeKomentar']);
 Route::post('/post/deletecomment/{id}', [FrontendController::class, 'deleteKomentar']);
