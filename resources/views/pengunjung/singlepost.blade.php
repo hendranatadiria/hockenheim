@@ -33,7 +33,6 @@
 
     <div class="col-md-6 offset-md-3">
     <div class="form-row pt-2">
-      <h4 class="pt-4">Komentar</h4>
       </div>
       <h4 class="pt-4 mt-4">Komentar</h4>
           </div>
@@ -90,9 +89,6 @@
       </div>
       @if(\Auth::guard('web')->check())
         <form action="/post/{{$post->idpost}}/komentar" method="POST">
-        <div class="form-row pt-2">
-            <h4 class="pt-4 pr-2">Berikan Komentar</h4>
-          </div>
           <div class="form-row pt-2">
           @csrf
             <label for="validationDefault04">Comment as <i><u><b>{{\Auth::guard('web')->user()->nama}}</b></u></i></label><br />
