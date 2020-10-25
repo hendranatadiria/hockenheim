@@ -35,6 +35,7 @@ Route::middleware('auth:web')->group(function () {
     Route::post('/post/tambah', [PenulisController::class, 'simpanPost']);
     Route::get('/post/edit/{id}', [PenulisController::class, 'editPost']);
     Route::post('/post/edit/{id}', [PenulisController::class, 'updatePost']);
+    Route::post('/post/hapus/{id}', [PenulisController::class, 'deletePost']);
     Route::get('/post/editAkun/{id}', [PenulisController::class, 'editAkunPenulis']);
     Route::post('/post/editAkun/{id}', [PenulisController::class, 'updateAkunPenulis']);
 });

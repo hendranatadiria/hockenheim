@@ -15,7 +15,7 @@
               </div>
               <div class="mt-4">
                 <button class="btn btn-success " type="submit">Selesai</button>
-                <button class="btn btn-danger" type="submit">cancel</button>
+                <a class="btn btn-danger" onclick="window.history.back();">Cancel</a>
               </div>
             </form>
           </div>

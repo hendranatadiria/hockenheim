@@ -3,7 +3,10 @@
 <section id="mypost" class="mypost bg-light pb-4">
     <div class="container">
         <div class="row mb-4 pt-5">
-            @if (session('error'))
+
+            <div class="col text-center">
+                <h2>Postingan Saya</h2>
+                @if (session('error'))
                 <div class="alert alert-danger">
                     {{ session('error') }}
                 </div>
@@ -13,8 +16,6 @@
                     {{ session('success') }}
                 </div>
             @endif
-            <div class="col text-center">
-                <h2>Postingan Saya</h2>
             </div>
         </div>
 
@@ -30,6 +31,7 @@
                             <p class="card-text text-center">Kategori: <a href="/kategori/{{$data->idkategori}}">{{$data->kategori->nama}}</a></p>
                             <a href="post/edit/{{$data->idpost}}"  class="btn btn-warning">Sunting</a>
                             <a href="post/{{$data->idpost}}"  class="btn btn-success">Lihat Selengkapnya</a>
+                            <form method="POST" action="/post/hapus/{{$data->idpost}}">@csrf <button class="btn btn-danger">Hapus</button></form>
                         </div>
                     </div>
                 </div>
