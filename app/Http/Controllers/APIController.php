@@ -22,5 +22,23 @@ class APIController extends Controller {
 
         return $post;
     }
+    
+    public function listpost() {
+        $post = Kategori::all(); 
 
+        return $post;
+    }
+
+    public function index() {
+        $post = Post::with('kategori', 'penulis')->orderByDesc('created_at')->get();
+
+        return $post;
+    }
+
+    public function kategoriPost($id){
+        $kategori = Kategori::with('kategori', 'penulis')->where('idkategori', $id)->firstOrFail();
+        $post = Post::with('kategori', 'penulis')->where('idkategori', $id)->get();
+
+        return compact('post', 'kategori');
+    }
 }

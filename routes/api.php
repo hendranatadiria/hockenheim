@@ -23,5 +23,8 @@ Route::middleware('api')->group(function () {
 
 
 });
-Route::get('/post/{id}', [APIController::class, 'lihatPost'])->name('api.single'); // api.single ini nama bebas, assign saja sesuai kebutuhan.
-Route::get('/search', [APIController::class, 'cariPost'])->name('api.search'); // api.single ini nama bebas, assign saja sesuai kebutuhan.
+Route::get('/post/{id}', [APIController::class, 'lihatPost'])->name('api.single'); // singlepost
+Route::get('/search', [APIController::class, 'cariPost'])->name('api.search'); // search
+Route::get('/listkategori', [APIController::class, 'listpost'])->name('api.listkategori');//listkategori
+Route::get('/listpost', [APIController::class, 'index'])->name('api.list'); //listpostterbaru
+Route::get('/listsinglekategori/{id}', [APIController::class, 'kategoriPost'])->name('api.singlekategori');//listsinglekategori
