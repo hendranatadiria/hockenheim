@@ -22,9 +22,9 @@ class APIController extends Controller {
 
         return $post;
     }
-    
+
     public function listpost() {
-        $post = Kategori::all(); 
+        $post = Kategori::all();
 
         return $post;
     }
@@ -36,9 +36,9 @@ class APIController extends Controller {
     }
 
     public function kategoriPost($id){
-        $kategori = Kategori::with('kategori', 'penulis')->where('idkategori', $id)->firstOrFail();
+        $kategori = Kategori::where('idkategori', $id)->firstOrFail();
         $post = Post::with('kategori', 'penulis')->where('idkategori', $id)->get();
 
-        return compact('post', 'kategori');
+        return compact('kategori', 'post');
     }
 }
